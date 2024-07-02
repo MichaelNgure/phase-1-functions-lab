@@ -1,52 +1,41 @@
 // Code your solution in this file!
 
 function distanceFromHqInBlocks(num){
-    if (num === 43){
-        return 1
-    }
-    if (num === 50){
-        return 8
-    }
-    if (num < 42){
-        return 8
+    let headquaters = 42
+    if (num > headquaters){
+        let actualDistance = num - headquaters
+        return actualDistance
+    }else if (num < headquaters){
+        return headquaters - num
+    }else {
+        return `in the same block`
     }
 }
 
 function distanceFromHqInFeet(num){
-    if (num === 43){
-        return 264
-    }
-    if (num === 50){
-        return 2112
-    }
-    if (num < 42){
-        return 2112
-    }
+    return distanceFromHqInBlocks(num) * 264
+
 }
 
-function distanceTravelledInFeet(dest, dis){
-    if (dest === 43 && dis === 48){
-        return 1320
-    }
-    if (dest === 50 && dis === 60){
-        return 2640
-    }
-    if (dest > dis){
-        return 1584
+function distanceTravelledInFeet(start, dest){
+    // const distancebetween = dest - start
+    // return Math.abs(distancebetween) * 264
+    if (start < dest){
+        return (dest - start) * 264
+    }else {4
+        return (start - dest) * 264
     }
 }
 
 function calculatesFarePrice(start, destination){
-    if (start === 43, destination === 44){
+    const distance = distanceTravelledInFeet(start, destination)
+    if (distance <= 400){
         return 0
-    }
-    if (start === 34, destination === 32){
-        return 2.56
-    }
-    if (start === 50, destination === 58){
+    }else if (distance > 400 && distance <= 2000){
+        return (distance - 400) * 0.02
+    }else if (distance > 2000 && distance < 2500){
         return 25
-    }
-    if (start === 34, destination === 24){
+    }else {
         return 'cannot travel that far'
     }
 }
